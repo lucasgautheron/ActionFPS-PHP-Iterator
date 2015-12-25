@@ -31,10 +31,14 @@ class GamesCachedActionReference extends ActualActionReference {
     
     function getNewGames()
     {
-        $fp = fopen("php://stdin", "r");
-        stream_set_blocking($fp, false);
-        $lines = [ json_decode(stream_get_contents($fp)) ];
-        fclose($fp);
+        static $lines = null;
+        if(!$lines)
+        {
+            $fp = fopen("php://stdin", "r");
+            stream_set_blocking($fp, false);
+            $lines = [ json_decode(stream_get_contents($fp)) ];
+            fclose($fp);
+        }
         return $lines;
     }
 }
