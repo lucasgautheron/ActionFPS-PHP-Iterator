@@ -8,11 +8,12 @@ class GamesCachedActionReference extends ActualActionReference {
     
     function getClans()
     {
-        if( !file_exists("clans.json"))
+        /*if( !file_exists("clans.json"))
         {
             file_put_contents("clans.json", file_get_contents("{$this->root}/clans/"));
         }
-        return json_decode(file_get_contents("clans.json"));
+        return json_decode(file_get_contents("clans.json"));*/
+        return file_get_contents("{$this->root}/clans/");
     }
     
     function getAllGames()
@@ -33,7 +34,7 @@ class GamesCachedActionReference extends ActualActionReference {
         $fp = fopen("php://stdin", "r");
         stream_set_blocking($fp, false);
         $lines = [ json_decode(stream_get_contents($fp)) ];
-        fclose($stream);
+        fclose($fp);
         return $lines;
     }
 }
