@@ -13,7 +13,7 @@ class GamesCachedActionReference extends ActualActionReference {
             file_put_contents("clans.json", file_get_contents("{$this->root}/clans/"));
         }
         return json_decode(file_get_contents("clans.json"));*/
-        return file_get_contents("{$this->root}/clans/");
+        return json_decode(file_get_contents("{$this->root}/clans/"));
     }
     
     function getAllGames()
