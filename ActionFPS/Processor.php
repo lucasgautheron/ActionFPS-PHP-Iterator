@@ -36,7 +36,6 @@ class Processor
             if(!in_array($game->id, $seen))
             {
                 $seen[] = $game->id;
-                $game = json_decode(file_get_contents("http://api.actionfps.com/game/?id={$game->id}"));
                 $state->state = $iterator->reduce($reference, $state, $game);
             }
         }
