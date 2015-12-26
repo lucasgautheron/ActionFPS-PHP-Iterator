@@ -6,7 +6,7 @@ require_once __DIR__ . "/../state/ClanStats.php";
 
 function sort_function($parameter)
 {
-    return create_function('$a,$b', 'return -($a->{$parameter} <=> $b->{$parameter});');
+    return create_function('$a,$b', 'return -($a->{' . $parameter . '} <=> $b->{' . $parameter . '});');
 }
 
 function get_clans()
