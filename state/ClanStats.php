@@ -68,7 +68,6 @@ class ClanStatsAccumulator implements ActionFPS\OrderedActionIterator
             {
                 $state->states[$state->lastupdate][$clan] = clone $clan_state;
             }
-            $this->sortClans($state->states[$state->lastupdate]);
             $state->lastupdate = strtotime("tomorrow", $time);
         }
     
@@ -109,7 +108,7 @@ class ClanStatsAccumulator implements ActionFPS\OrderedActionIterator
             $winner->elo += $k * (1 - $p);
             $loser->elo  -= $k * (1 - $p);
         }
-        //$this->sortClans($state->now);
+        $this->sortClans($state->now);
         return $state;
     }
 
