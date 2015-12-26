@@ -4,7 +4,7 @@ $processor = new ActionFPS\Processor();
 require_once __DIR__ . "/../state/Clanwars.php";
 require_once __DIR__ . "/../state/ClanStats.php";
 
-function sort_func($parameter)
+function sort_function($parameter)
 {
     return create_function('$a,$b', 'return -($a->{$parameter} <=> $b->{$parameter});');
 }
@@ -47,7 +47,7 @@ function get_clanwars($count = null, $completed = null, $clan = null, $wid = nul
             if($clan && $clanwar->clans[0]->clan != $clan && $clanwar->clans[1]->clan != $clan) continue;
             $selected[$id] = $clanwar;
         }
-        uasort($selected, sort_funct('startTime'));
+        uasort($selected, sort_function('startTime'));
     }
     else
     {
@@ -81,7 +81,7 @@ function get_clanstats($count = 15, $clan = null, $time = false)
         $_clan->name = find_clan($_clan->clan)->name;
     }
     
-    uasort($clanstats->now, sort_funct('wars'));
+    uasort($clanstats->now, sort_function('wars'));
     
     $stats = new stdClass();
     $stats->now = [];
